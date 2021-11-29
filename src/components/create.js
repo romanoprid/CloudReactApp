@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 import { API } from 'aws-amplify';
 
 export default function Create() {
@@ -8,6 +8,11 @@ export default function Create() {
     const [person, setPerson] = useState('');
     const [deliveryInfo, setDeliveryInfo] = useState('');
 
+    const [timestamp, setTimestamp] = useState('');
+    const [sensor_id, setSensorId] = useState('');
+    const [sensor_type, setSensorType] = useState('');
+    const [SECRET_KEY, setSecretKey] = useState('_)(*&^%');
+
     const postData = () => {
         API.post('newpostapi', '/department', {
             body: {
@@ -15,6 +20,10 @@ export default function Create() {
                 delivery: delivery,
                 person: person,
                 deliveryInfo: deliveryInfo,
+                timestamp:timestamp,
+                sensor_id:sensor_id,
+                sensor_type:sensor_type,
+                SECRET_KEY: SECRET_KEY
             }
         })
     }
@@ -37,6 +46,27 @@ export default function Create() {
                     <label>Delivery Info</label>
                     <input placeholder='Delivery Info' onChange={(e) => setDeliveryInfo(e.target.value)}/>
                 </Form.Field>
+
+                <Form.Field>
+                    <label>Timestamp</label>
+                    <input placeholder='Timestamp' onChange={(e) => setTimestamp(e.target.value)}/>
+                </Form.Field>
+
+                <Form.Field>
+                    <label>SensorID</label>
+                    <input placeholder='Sensor ID' onChange={(e) => setSensorId(e.target.value)}/>
+                </Form.Field>
+
+                <Form.Field>
+                    <label>SensorType</label>
+                    <input placeholder='PeSensor Type' onChange={(e) => setSensorType(e.target.value)}/>
+                </Form.Field>
+
+                <Form.Field>
+                    <label>SecretKey</label>
+                    <input placeholder='Secret Key' onChange={(e) => setSecretKey(e.target.value)}/>
+                </Form.Field>
+
                 <Button onClick={postData} type='submit'>Submit</Button>
             </Form>
         </div>

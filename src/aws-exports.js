@@ -8,12 +8,21 @@ const awsmobile = {
         {
             "tableName": "newpost-dev",
             "region": "us-west-2"
+        },
+        {
+            "tableName": "iotsensors-dev",
+            "region": "us-west-2"
         }
     ],
     "aws_cloud_logic_custom": [
         {
             "name": "newpostapi",
             "endpoint": "https://pabf5nes4k.execute-api.us-west-2.amazonaws.com/dev",
+            "region": "us-west-2"
+        },
+        {
+            "name": "sensorsapi",
+            "endpoint": "https://wc92in2sc3.execute-api.us-west-2.amazonaws.com/dev",
             "region": "us-west-2"
         }
     ]

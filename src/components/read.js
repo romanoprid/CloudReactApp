@@ -42,10 +42,14 @@ export default function Read() {
             <Table singleLine>
                 <Table.Header>
                     <Table.Row>
+                        
+                        <Table.HeaderCell>Delivery</Table.HeaderCell>
+                        <Table.HeaderCell>DeliveryInfo</Table.HeaderCell>
                         <Table.HeaderCell>Department</Table.HeaderCell>
                         <Table.HeaderCell>Person</Table.HeaderCell>
-                        <Table.HeaderCell>DeliveryInfo</Table.HeaderCell>
-                        <Table.HeaderCell>Update</Table.HeaderCell>
+                        <Table.HeaderCell>SensorID</Table.HeaderCell>
+                        <Table.HeaderCell>SensorType</Table.HeaderCell>
+                        <Table.HeaderCell>Timestamp</Table.HeaderCell>
                         <Table.HeaderCell>Delete</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
@@ -54,14 +58,19 @@ export default function Read() {
                     { APIData.map((data, key) => {
                         return (
                             <Table.Row>
+                                <Table.Cell>{data.delivery.S}</Table.Cell>
+                                <Table.Cell>{data.deliveryInfo.S}</Table.Cell>
                                 <Table.Cell>{data.department.S}</Table.Cell>
                                 <Table.Cell>{data.person.S}</Table.Cell>
-                                <Table.Cell>{data.deliveryInfo.S}</Table.Cell>
-                                <Link to={{pathname: '/update', data: data.id.S}}>
+                                <Table.Cell>{data.sensor_id.S}</Table.Cell>
+                                <Table.Cell>{data.sensor_type.S}</Table.Cell>
+                                <Table.Cell>{data.timestamp.S}</Table.Cell>
+                                
+                                {/* <Link to={{pathname: '/update', data: data.id.S}}>
                                     <Table.Cell>
                                         <Button onClick={() => setData(data.id.S)}>Update</Button>
                                     </Table.Cell>
-                                </Link>
+                                </Link> */}
                                 <Table.Cell>
                                     <Button onClick={() => onDelete(data.id.S)}>Delete</Button>
                                 </Table.Cell>
