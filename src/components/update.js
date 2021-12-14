@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'semantic-ui-react'
-import {API} from "aws-amplify";
 import { useLocation } from 'react-router-dom'
 
 export default function Update() {
@@ -17,15 +16,16 @@ export default function Update() {
     }, [location.data]);
 
     const updateAPIData = () => {
-        API.put('newpostapi', `/department/${id}`, {
-            body: {
-                department: department,
-                delivery: delivery,
-                person: person,
-                deliveryInfo: deliveryInfo,
+        // API.put('newpostapi', `/department/${id}`, {
+        //     body: {
+        //         department: department,
+        //         delivery: delivery,
+        //         person: person,
+        //         deliveryInfo: deliveryInfo,
 
-            }
-        })
+        //     }
+        // })
+
     }
 
     return (

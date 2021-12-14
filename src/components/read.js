@@ -2,19 +2,22 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { API } from 'aws-amplify';
+import axios from "axios";
 
 export default function Read() {
     const [APIData, setAPIData] = useState([]);
 
     const fetchData = async () => {
         try {
-          const data = await API.get('newpostapi', '/department');
-          console.log(data)
-          setAPIData(data);
-        } catch (error) {
-          console.log(error);
-        }
+
+
+            axios.get('http://lab1cloud.xyz::80/api/').then(res => {
+                    const data = res.data;
+                    setAPIData(data);
+                })
+          } catch (error) {
+            console.log(error);
+          }
     }
 
 
@@ -33,8 +36,7 @@ export default function Read() {
     }
 
     const onDelete = (id) => {
-        API.del('newpostapi', `/department/${id}`)
-        fetchData();
+        axios.delete(`http://lab1cloud.xyz:5000/department/${id}`)
     }
 
     return (

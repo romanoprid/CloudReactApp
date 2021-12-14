@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react'
-import { API } from 'aws-amplify';
+import axios from "axios";
 
 export default function Create() {
     const [department, setDepartment] = useState('');
@@ -14,19 +14,33 @@ export default function Create() {
     const [SECRET_KEY, setSecretKey] = useState('_)(*&^%');
 
     const postData = () => {
-        API.post('newpostapi', '/department', {
-            body: {
-                department: department,
-                delivery: delivery,
-                person: person,
-                deliveryInfo: deliveryInfo,
-                timestamp:timestamp,
-                sensor_id:sensor_id,
-                sensor_type:sensor_type,
-                SECRET_KEY: SECRET_KEY
-            }
-        })
+        // API.post('newpostapi', '/department', {
+        //     body: {
+        //         department: department,
+        //         delivery: delivery,
+        //         person: person,
+        //         deliveryInfo: deliveryInfo,
+        //         timestamp:timestamp,
+        //         sensor_id:sensor_id,
+        //         sensor_type:sensor_type,
+        //         SECRET_KEY: SECRET_KEY
+        //     }
+        // })
+        const body = {
+  
+            department: department,
+            delivery: delivery,
+            person: person,
+            deliveryInfo: deliveryInfo,
+            timestamp:timestamp,
+            sensor_id:sensor_id,
+            sensor_type:sensor_type,
+            SECRET_KEY: SECRET_KEY
+        };
+        axios.post(`http://www.lab1cloud.xyz/api/`, {body})
     }
+    
+ 
     return (
         <div>
             <Form className="create-form">
