@@ -9,7 +9,7 @@ services:
       - AWS_REGION=us-west-2
       - STORAGE_NEWPOST_NAME=newpost-dev
     build:
-      dockerfile: ./back/Dockerfile
+      dockerfile: ./docker_back/Dockerfile
     deploy:
       x-aws-autoscaling: 
         cpu: 20
@@ -22,6 +22,6 @@ services:
       - back
     image: romanpanda/front
     build:
-      dockerfile: ./front/Dockerfile
+      dockerfile: ./docker_front/Dockerfile
     ports:
       - 80:80
