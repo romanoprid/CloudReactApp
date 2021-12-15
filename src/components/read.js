@@ -11,7 +11,7 @@ export default function Read() {
         try {
 
 
-            axios.get('http://lab1cloud.xyz::80/api/').then(res => {
+            axios.get('http://lab1cloud.xyz:80/api/').then(res => {
                     const data = res.data;
                     setAPIData(data);
                 })
